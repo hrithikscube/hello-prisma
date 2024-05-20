@@ -9,15 +9,11 @@ let todos = [
   }
 ];
 
+
 router.get('/', (req, res) => {
   res.send('Edge function running successfully');
 });
 
-router.get('/todos', (req, res) => {
-  res.send({
-    data: todos
-  }).status(200)
-})
 
-app.use('/api', router);
+app.use('/.netlify/functions/api', router);
 module.exports.handler = serverless(app);
